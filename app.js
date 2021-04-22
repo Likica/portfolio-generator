@@ -38,10 +38,24 @@ const promptUser = () => {
                 }
             }
         },
+        //confirm whther user wants to enter additional informatuion to "About" section
+        {
+            type: 'confirm',
+            name: 'confirmAbout',
+            message: 'Would you like to enter some information about yourself for an "About" section?',
+            default: true
+        },
         {
             type: 'input',
             name: 'about',
-            message: 'Provide some information about yourself:(Required)'
+            message: 'Provide some information about yourself:(Required)',
+            when: ({ confirmAbout }) => {
+                if (confirmAbout) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
         }
     ]);
 };
